@@ -1,0 +1,46 @@
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+.wrapper {
+	--size: 120px;
+	display: flex;
+}
+
+.wrapper.xs {
+	--size: 100px;
+}
+.wrapper.md {
+	--size: 150px;
+}
+.wrapper.lg {
+	--size: 180px;
+}
+
+.wrapper .item {
+	width: var(--size);
+	height: var(--size);
+}
+
+.item {
+	display: grid;
+	place-items: center;
+
+	border: 5px solid #fff;
+	border-radius: 50%;
+	background-color: #ccc;
+
+	position: relative;
+	overflow: hidden;
+}
+
+.item + .item {
+	margin-left: -20px;
+}
+
+.item img {
+	display: block;
+	height: 100%;
+	object-fit: cover;
+}
