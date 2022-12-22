@@ -6,7 +6,7 @@ type Avatar = {
 };
 
 type Props = {
-	data: Array<Avatar>;
+	data?: Array<Avatar>;
 	maxLength?: number;
 	size?: 'xs' | 'sm' | 'md' | 'lg';
 };

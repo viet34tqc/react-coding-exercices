@@ -1,10 +1,10 @@
 import './App.css';
-import AvatarGroup from './AvatarGroup/AvatarGroup';
+import TrackingOrderBoxes from './TrackingOrderBoxes/TrackingOrderBoxes';
 
 function App() {
 	return (
 		<div className="App">
-			<AvatarGroup size="md" />
+			<TrackingOrderBoxes />
 		</div>
 	);
 }
