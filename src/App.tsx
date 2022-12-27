@@ -1,10 +1,10 @@
 import './App.css';
-import TrackingOrderBoxes from './TrackingOrderBoxes/TrackingOrderBoxes';
+import ImportCSV from './ImportCSV/ImportCSV';
 
 function App() {
 	return (
 		<div className="App">
-			<TrackingOrderBoxes />
+			<ImportCSV />
 		</div>
 	);
 }
