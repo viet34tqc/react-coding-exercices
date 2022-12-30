@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-const Table = ({ data }: { data: {}[] }) => {
+type TRow = Record<string, string>
+
+const Table = ({ data }: { data: TRow[] }) => {
 	if (data?.length === 0) return null;
 	const headerKeys = Object.keys(data[0]);
 
@@ -27,7 +29,7 @@ const Table = ({ data }: { data: {}[] }) => {
 };
 
 const ImportCSV = () => {
-	const [data, setData] = useState<{}[]>([]);
+	const [data, setData] = useState<TRow[]>([]);
 	const csvFileToArray = (string: string) => {
 		const csvHeader = string.slice(0, string.indexOf('\n')).split(',');
 		const csvRows = string
@@ -40,7 +42,7 @@ const ImportCSV = () => {
 			return csvHeader.reduce((dataRow, header, index) => {
 				dataRow[header] = values[index].trim();
 				return dataRow;
-			}, {});
+			}, {} as TRow);
 		});
 		return dataRows;
 	};

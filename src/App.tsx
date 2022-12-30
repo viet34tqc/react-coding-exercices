@@ -1,10 +1,10 @@
 import './App.css';
-import ImportCSV from './ImportCSV/ImportCSV';
+import DoubleClick from './DoubleClick/DoubleClick';
 
 function App() {
 	return (
 		<div className="App">
-			<ImportCSV />
+			<DoubleClick />
 		</div>
 	);
 }
