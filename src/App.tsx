@@ -1,10 +1,10 @@
 import './App.css';
-import DoubleClick from './DoubleClick/DoubleClick';
+import LovelyDots from './LovelyDots/LovelyDots';
 
 function App() {
 	return (
 		<div className="App">
-			<DoubleClick />
+			<LovelyDots />
 		</div>
 	);
 }
