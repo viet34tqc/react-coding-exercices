@@ -1,10 +1,10 @@
 import './App.css';
-import LovelyDots from './LovelyDots/LovelyDots';
+import SimpleTreeData from './SimpleTreeData/SimpleTreeData';
 
 function App() {
 	return (
 		<div className="App">
-			<LovelyDots />
+			<SimpleTreeData />
 		</div>
 	);
 }

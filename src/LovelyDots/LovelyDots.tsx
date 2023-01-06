@@ -32,7 +32,9 @@ const LovelyDots = () => {
 		<div className={styles.wrapper}>
 			<div className={styles.buttons}>
 				{points.length > 0 && <button onClick={handleUndo}>Undo</button>}
-				{popped.length > 0 && <button onClick={handleRedo}>Redo</button>}
+				{popped.length > 0 && points.length > 0 && (
+					<button onClick={handleRedo}>Redo</button>
+				)}
 			</div>
 			<div className={styles.clickArea} onClick={handleSetPoints}>
 				{points.length > 0 &&
