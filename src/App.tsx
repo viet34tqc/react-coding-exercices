@@ -1,11 +1,13 @@
+import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import SimpleTreeData from './SimpleTreeData/SimpleTreeData';
-
+import Button from './Button/Button';
 function App() {
 	return (
-		<div className="App">
-			<SimpleTreeData />
-		</div>
+		<BrowserRouter>
+			<div className="App">
+				<Button href="/home">AbC</Button>
+			</div>
+		</BrowserRouter>
 	);
 }
 
