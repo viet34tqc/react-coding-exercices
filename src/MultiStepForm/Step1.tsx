@@ -27,7 +27,6 @@ const Step1 = () => {
 	} = methods;
 	const navigate = useNavigate();
 	const onSubmit = (data: Step1FormData) => {
-		console.log('data', data);
 		setFormData({ ...formData, ...data });
 		navigate('/step2');
 	};
