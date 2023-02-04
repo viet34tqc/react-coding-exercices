@@ -1,13 +1,10 @@
-import { BrowserRouter } from 'react-router-dom';
 import './App.css';
-import Button from './Button/Button';
+import MultiStepForm from './MultiStepForm/MultiStepForm';
 function App() {
 	return (
-		<BrowserRouter>
-			<div className="App">
-				<Button href="/home">AbC</Button>
-			</div>
-		</BrowserRouter>
+		<div className="App">
+			<MultiStepForm />
+		</div>
 	);
 }
 
