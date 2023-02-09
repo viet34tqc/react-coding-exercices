@@ -1,9 +1,9 @@
 import './App.css';
-import MultiStepForm from './MultiStepForm/MultiStepForm';
+import SimpleDnD from './SimpleDnD/SimpleDnD';
 function App() {
 	return (
 		<div className="App">
-			<MultiStepForm />
+			<SimpleDnD />
 		</div>
 	);
 }
