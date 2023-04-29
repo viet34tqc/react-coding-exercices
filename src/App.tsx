@@ -1,11 +1,14 @@
 import './App.css';
-import SimpleDnD from './SimpleDnD/SimpleDnD';
+import FormValidation from './FormValidation/FormValidation';
+
+type ErrorMessages = {
+  email: string[];
+  password: string[];
+  passwordConfirm: string[];
+};
+
 function App() {
-	return (
-		<div className="App">
-			<SimpleDnD />
-		</div>
-	);
+  return <FormValidation />;
 }
 
 export default App;
