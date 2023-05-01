@@ -1,15 +1,8 @@
 import './App.css';
-import ColorDrawer from './ColorPicker/ColorDrawer';
-import ColorPicker from './ColorPicker/ColorPicker';
-import { ColorPickerProvider } from './ColorPicker/ColorPickerContext';
+import SimpleCalculator from './SimpleCalculator/SimpleCalculator';
 
 function App() {
-  return (
-    <ColorPickerProvider>
-      <ColorPicker />
-      <ColorDrawer />
-    </ColorPickerProvider>
-  );
+  return <SimpleCalculator />;
 }
 
 export default App;
