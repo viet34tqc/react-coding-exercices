@@ -1,8 +1,8 @@
 import './App.css';
-import SimpleCalculator from './SimpleCalculator/SimpleCalculator';
+import SimpleCart from './SimpleCart/SimpleCart';
 
 function App() {
-  return <SimpleCalculator />;
+  return <SimpleCart />;
 }
 
 export default App;
