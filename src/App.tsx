@@ -1,14 +1,15 @@
 import './App.css';
-import FormValidation from './FormValidation/FormValidation';
-
-type ErrorMessages = {
-  email: string[];
-  password: string[];
-  passwordConfirm: string[];
-};
+import ColorDrawer from './ColorPicker/ColorDrawer';
+import ColorPicker from './ColorPicker/ColorPicker';
+import { ColorPickerProvider } from './ColorPicker/ColorPickerContext';
 
 function App() {
-  return <FormValidation />;
+  return (
+    <ColorPickerProvider>
+      <ColorPicker />
+      <ColorDrawer />
+    </ColorPickerProvider>
+  );
 }
 
 export default App;

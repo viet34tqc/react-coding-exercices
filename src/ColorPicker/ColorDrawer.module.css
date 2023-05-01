@@ -1,0 +1,12 @@
+.wrapper {
+  display: grid;
+  gap: 10px;
+  width: 200px;
+  justify-items: center;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.square {
+  width: 10px;
+  height: 10px;
+}
