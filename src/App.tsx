@@ -1,8 +1,8 @@
 import './App.css';
-import SimpleCart from './SimpleCart/SimpleCart';
+import ContactBook from './ContactBook/ContactBook';
 
 function App() {
-  return <SimpleCart />;
+  return <ContactBook />;
 }
 
 export default App;
