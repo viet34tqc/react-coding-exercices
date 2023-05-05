@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import useLocalStorage from '../hooks/useLocalStorage';
 import { uniqueId } from '../util';
 import Form from './Form';
 import List from './List';
@@ -12,10 +12,10 @@ export type Person = {
 export type Persons = Record<Person['id'], Person>;
 
 const ContactBook = () => {
-  const [persons, setPersons] = useState<Persons>({});
+  const [persons, setPersons] = useLocalStorage<Persons>('contactBook', {});
   const handleSubmit = (person: Person) => {
     const id = uniqueId();
-    setPersons(prev => ({ ...prev, [id]: { ...person, id } }));
+    setPersons((prev: Persons) => ({ ...prev, [id]: { ...person, id } }));
   };
   return (
     <div>
