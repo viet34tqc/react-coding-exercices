@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+}
+
+.wrapper input {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+.wrapper label:hover,
+.wrapper label:has(~ input:checked),
+.wrapper span:has(~ span input:checked) label,
+.wrapper span:has(~ span label:hover) label {
+  color: yellow;
+}
+
+.wrapper span:hover ~ span label {
+  color: initial !important;
+}

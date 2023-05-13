@@ -1,8 +1,8 @@
 import './App.css';
-import ContactBook from './ContactBook/ContactBook';
+import Rating from './Rating/Rating';
 
 function App() {
-  return <ContactBook />;
+  return <Rating />;
 }
 
 export default App;
