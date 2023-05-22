@@ -1,8 +1,8 @@
 import './App.css';
-import Rating from './Rating/Rating';
+import CallbackRef from './CallbackRef/CallbackRef';
 
 function App() {
-  return <Rating />;
+  return <CallbackRef />;
 }
 
 export default App;
