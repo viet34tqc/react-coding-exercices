@@ -1,16 +1,7 @@
-import './App.css';
-import DropdownSelect from './DropdownSelect/DropdownSelect';
-
-const options = [
-  { label: 'One', value: 1 },
-  { label: 'Two', value: 2 },
-  { label: 'Three', value: 3 },
-  { label: 'Four', value: 4 },
-  { label: 'Five', value: 5 },
-];
+import OTPInut from './OTPInut/OTPInut';
 
 function App() {
-  return <DropdownSelect options={options} />;
+  return <OTPInut />;
 }
 
 export default App;
