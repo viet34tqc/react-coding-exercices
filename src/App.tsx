@@ -1,7 +1,7 @@
-import OTPInut from './OTPInut/OTPInut';
+import FormValidation from './FormValidation/FormValidation';
 
 function App() {
-  return <OTPInut />;
+  return <FormValidation />;
 }
 
 export default App;

@@ -1,93 +1,122 @@
-import { FormEvent, useState } from 'react';
-
-type ErrorMessages = {
+import { FormEvent, useReducer, useState } from 'react';
+import { Button } from '../ui/Button';
+import { InputField } from '../ui/FormFields/InputField';
+import {
+  EMAIL_NOT_VALID_MESS,
+  EMAIL_REQUIRED_MESS,
+  PASSWORD_CONFIRM_REQUIRED_MESS,
+  PASSWORD_MATCH_MESS,
+  PASSWORD_MIN_LENGTH_MESS,
+  PASSWORD_REQUIRED_MESS,
+} from './constants';
+const emailRegex = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+type Errors = {
   email: string[];
   password: string[];
   passwordConfirm: string[];
 };
 
-const FormValidation = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+const defaultState = {
+  email: '',
+  password: '',
+  passwordConfirm: '',
+};
 
-  const [messages, setMessages] = useState<ErrorMessages>({
-    email: [''],
-    password: [''],
-    passwordConfirm: [''],
+type prevState = typeof defaultState;
+type nextState = {
+  [K in keyof prevState]: Record<K, prevState[K]>;
+}[keyof prevState];
+
+const FormValidation = () => {
+  const [state, setState] = useReducer(
+    (prev: prevState, next: nextState) => ({ ...prev, ...next }),
+    {
+      email: '',
+      password: '',
+      passwordConfirm: '',
+    }
+  );
+
+  const [errors, setErrors] = useState<Errors>({
+    email: [] as string[],
+    password: [] as string[],
+    passwordConfirm: [] as string[],
   });
 
   const getErrors = () => {
-    const errors = {
-      email: [''],
-      password: [''],
-      passwordConfirm: [''],
+    const err = {
+      email: [] as string[],
+      password: [] as string[],
+      passwordConfirm: [] as string[],
     };
-    if (!email) {
-      errors['email'].push('Email is required');
+    if (!state.email) {
+      err['email'].push(EMAIL_REQUIRED_MESS);
     }
-    if (!password) {
-      errors['password'].push('Password is required');
+    if (!state.password) {
+      err['password'].push(PASSWORD_REQUIRED_MESS);
     }
-    if (!passwordConfirm) {
-      errors['passwordConfirm'].push('Password Confirm is required');
+    if (state.password && !state.passwordConfirm) {
+      err['passwordConfirm'].push(PASSWORD_CONFIRM_REQUIRED_MESS);
     }
-    if (!email.includes('@')) {
-      errors['email'].push('Email is not valid');
+    if (!emailRegex.test(state.email)) {
+      err['email'].push(EMAIL_NOT_VALID_MESS);
     }
-    if (password.length < 8) {
-      errors['password'].push('Passwords must be 8 characters or longer');
+    if (state.password.length < 8) {
+      err['password'].push(PASSWORD_MIN_LENGTH_MESS);
     }
-    if (password !== passwordConfirm) {
-      errors['passwordConfirm'].push('Passwords must match');
+    if (state.password !== state.passwordConfirm) {
+      err['passwordConfirm'].push(PASSWORD_MATCH_MESS);
     }
-    return errors;
+    return err;
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const errors = getErrors();
-    setMessages(errors);
+    setErrors(errors);
   };
 
   return (
     <form onSubmit={handleSubmit}>
       <h2>Sign Up!</h2>
       <label htmlFor="email">Email</label>
-      <input
+      <InputField
         type="text"
         name="email"
-        onChange={e => setEmail(e.target.value)}
+        data-testid="email"
+        onChange={e => setState({ email: e.target.value })}
       />
       <div>
-        {messages.email.map(m => (
+        {errors.email.map(m => (
           <p key={m}>{m}</p>
         ))}
       </div>
       <label htmlFor="password">Password</label>
-      <input
+      <InputField
         type="password"
         name="password"
-        onChange={e => setPassword(e.target.value)}
+        data-testid="password"
+        onChange={e => setState({ password: e.target.value })}
       />
       <div>
-        {messages.password.map(m => (
+        {errors.password.map(m => (
           <p key={m}>{m}</p>
         ))}
       </div>
       <label htmlFor="password-confirm">Confirm Password </label>
-      <input
+      <InputField
         type="password"
         name="password-confirm"
-        onChange={e => setPasswordConfirm(e.target.value)}
+        data-testid="password-confirm"
+        onChange={e => setState({ passwordConfirm: e.target.value })}
       />
       <div>
-        {messages.passwordConfirm.map(m => (
+        {errors.passwordConfirm.map(m => (
           <p key={m}>{m}</p>
         ))}
       </div>
-      <input type="submit" value="Submit" />
+      <Button type="submit">Submit</Button>
     </form>
   );
 };
