@@ -15,8 +15,6 @@ const ColorDrawerSquare = () => {
 };
 
 const ColorDrawer = () => {
-  const { color } = useColorPicker();
-  const [bg, setBg] = useState<string>(color || '#ccc');
   return (
     <div className={styles.wrapper}>
       {Array(10)
