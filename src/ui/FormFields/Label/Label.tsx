@@ -1,15 +1,7 @@
-import { ComponentPropsWithoutRef, PropsWithChildren } from 'react';
+import { ComponentPropsWithoutRef } from 'react';
 
-const Label = ({
-	children,
-	htmlFor,
-	...props
-}: PropsWithChildren<ComponentPropsWithoutRef<'label'>>) => {
-	return (
-		<label htmlFor={htmlFor} {...props}>
-			{children}
-		</label>
-	);
+const Label = ({ children, ...props }: ComponentPropsWithoutRef<'label'>) => {
+  return <label {...props} />;
 };
 
 export default Label;
