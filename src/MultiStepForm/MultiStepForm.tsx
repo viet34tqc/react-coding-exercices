@@ -1,36 +1,19 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import MultiFormContextProvider from './FormContext';
-import Step1 from './Step1';
+import { routes } from './routes';
 const Step2 = lazy(() => import('./Step2'));
 const Result = lazy(() => import('./Result'));
 
 const MultiStepForm = () => {
-	return (
-		<MultiFormContextProvider>
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Step1 />} />
-					<Route
-						path="/step2"
-						element={
-							<Suspense fallback={<>...Loading</>}>
-								<Step2 />
-							</Suspense>
-						}
-					/>
-					<Route
-						path="/result"
-						element={
-							<Suspense fallback={<>...Loading</>}>
-								<Result />
-							</Suspense>
-						}
-					/>
-				</Routes>
-			</BrowserRouter>
-		</MultiFormContextProvider>
-	);
+  const router = createBrowserRouter(routes);
+  return (
+    <MultiFormContextProvider>
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </MultiFormContextProvider>
+  );
 };
 
 export default MultiStepForm;

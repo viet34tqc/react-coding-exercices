@@ -1,7 +1,7 @@
-import FormValidation from './FormValidation/FormValidation';
+import MultiStepForm from './MultiStepForm/MultiStepForm';
 
 function App() {
-  return <FormValidation />;
+  return <MultiStepForm />;
 }
 
 export default App;
