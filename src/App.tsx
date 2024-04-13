@@ -1,7 +1,7 @@
-import MultiStepForm from './MultiStepForm/MultiStepForm';
+import DemoWithIntersectionObserver from './DemoInfiniteScroll/DemoWithIntersectionObserver';
 
 function App() {
-  return <MultiStepForm />;
+  return <DemoWithIntersectionObserver />;
 }
 
 export default App;

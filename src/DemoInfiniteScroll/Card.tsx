@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { useInView } from '../useInView';
+import { useInView } from '../hooks/useInView';
 
 export const Card = ({ children }: PropsWithChildren) => {
   const ref = React.useRef<HTMLDivElement | null>(null);
