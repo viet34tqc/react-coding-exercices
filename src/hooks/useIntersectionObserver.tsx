@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 
-const useIntersectionObserver = (options?: {
-  threshold: number | number[];
+const useIntersectionObserver = (props?: {
+  onIntersecting?: (ele: HTMLElement) => void;
+  options?: {
+    threshold: number | number[];
+  };
 }) => {
   // What return: ref, isVisible
   const [node, setNode] = useState<HTMLElement | null>(null);
@@ -16,7 +19,10 @@ const useIntersectionObserver = (options?: {
 
     const observer = new IntersectionObserver(entries => {
       setIsVisible(entries[0].isIntersecting);
-    });
+      if (props?.onIntersecting) {
+        props?.onIntersecting(node);
+      }
+    }, props?.options);
 
     observer.observe(node);
 

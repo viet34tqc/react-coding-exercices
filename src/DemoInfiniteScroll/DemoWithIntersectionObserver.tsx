@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
-import { Card } from './Card';
+import { CardIntersection } from './CardIntersection';
 import './style.css';
 
 const DemoWithIntersectionObserver = () => {
@@ -37,10 +37,10 @@ const DemoWithIntersectionObserver = () => {
     <>
       <div className="grid">
         {products.map((product, index) => (
-          <Card key={index}>{product.name}</Card>
+          <CardIntersection key={index}>{product.name}</CardIntersection>
         ))}
       </div>
-      <div ref={bottomRef} />
+      <div className="bottom" style={{ height: '1px' }} ref={bottomRef} />
       {isFetching && (
         <div className="loading">
           <div className="loading__inner">Loading more data ...</div>
