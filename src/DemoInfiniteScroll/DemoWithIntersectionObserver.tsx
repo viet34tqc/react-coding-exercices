@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
-import { CardIntersection } from './CardIntersection';
+import { Card } from './Card';
 import './style.css';
 
 const DemoWithIntersectionObserver = () => {
@@ -12,16 +12,23 @@ const DemoWithIntersectionObserver = () => {
   const [isFetching, setIsFetching] = useState(false);
   const [products, setProducts] = useState(initialProducts);
   const { ref: bottomRef, isVisible } = useIntersectionObserver();
+  const ref = useRef<() => void>();
+
+  useEffect(() => {
+    ref.current = () => {
+      const fetchedProduct = Array(20)
+        .fill(0)
+        .map((_, index) => ({
+          name: `${products.length + index + 1}`,
+        }));
+      setIsFetching(false);
+      setProducts([...products, ...fetchedProduct]);
+    };
+  }, [products]);
 
   const fetchModeProduct = useCallback(() => {
-    const fetchedProduct = Array(20)
-      .fill(0)
-      .map((_, index) => ({
-        name: `${products.length + index + 1}`,
-      }));
-    setIsFetching(false);
-    setProducts([...products, ...fetchedProduct]);
-  }, [products]);
+    ref?.current?.();
+  }, []);
 
   const handleReachBottom = useCallback(() => {
     setIsFetching(true);
@@ -32,12 +39,13 @@ const DemoWithIntersectionObserver = () => {
     if (isVisible) {
       handleReachBottom();
     }
-  }, [isVisible, handleReachBottom]);
+  }, [isVisible]);
+
   return (
     <>
       <div className="grid">
         {products.map((product, index) => (
-          <CardIntersection key={index}>{product.name}</CardIntersection>
+          <Card key={index}>{product.name}</Card>
         ))}
       </div>
       <div className="bottom" style={{ height: '1px' }} ref={bottomRef} />
